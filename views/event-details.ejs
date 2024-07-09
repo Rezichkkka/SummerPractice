@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <title>Деталі події</title>
+    <style>
+        /* Общие стили для страницы */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #111; /* Темный фон страницы */
+            color: #ddd; /* Светлый текст по умолчанию */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Основной контейнер для страницы */
+        .main-content {
+            flex: 1; /* Заполняет доступное пространство */
+            padding: 20px;
+        }
+
+        /* Футер */
+        .footer {
+            width: 100%;
+            height: 60px;
+            background-color: #111; /* Темный фон для футера */
+            color: #0ff; /* Цвет текста футера в стиле неона */
+            text-align: center;
+            line-height: 60px; /* Вертикальное выравнивание текста */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+            position: relative; /* Позиционирование футера */
+        }
+
+        /* Стили для текста футера */
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #0ff; /* Цвет текста футера в стиле неона */
+        }
+
+        /* Кнопки в неоновом стиле */
+        .btn-primary {
+            background: #111; /* Темный фон для кнопки */
+            color: #0ff; /* Яркий неоновый цвет текста */
+            border: 2px solid #0ff; /* Неоновая рамка вокруг кнопки */
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+            transition: all 0.3s ease; /* Плавные переходы */
+        }
+
+        .btn-primary:hover {
+            background: #0ff; /* Яркий неоновый цвет фона при наведении */
+            color: #111; /* Темный цвет текста при наведении */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1); /* Усиление неоновой тени */
+        }
+
+        .btn-success {
+            background: #28a745; /* Зеленый фон для кнопки */
+            color: #fff; /* Белый текст */
+            border: 2px solid #28a745; /* Зеленая рамка вокруг кнопки */
+            box-shadow: 0 0 5px rgba(40, 167, 69, 0.8), 0 0 10px rgba(40, 167, 69, 0.8); /* Тень */
+            text-shadow: 0 0 5px rgba(40, 167, 69, 0.8); /* Светящийся текст */
+            transition: all 0.3s ease; /* Плавные переходы */
+        }
+
+        .btn-success:hover {
+            background: #fff; /* Белый фон при наведении */
+            color: #28a745; /* Зеленый текст при наведении */
+            box-shadow: 0 0 10px rgba(40, 167, 69, 1), 0 0 20px rgba(40, 167, 69, 1); /* Усиление тени при наведении */
+        }
+
+        /* Заголовки в неоновом стиле */
+        h1, h5 {
+            color: #0ff; /* Яркий неоновый цвет текста */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+            font-weight: bold; /* Полужирный текст */
+            margin-bottom: 20px;
+        }
+
+        /* Ссылки в неоновом стиле */
+        a {
+            color: #0ff; /* Яркий неоновый цвет текста */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+        }
+
+        a:hover {
+            color: #fff; /* Белый цвет текста при наведении */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 1); /* Усиление неонового свечения */
+        }
+
+        /* Карточка мероприятия */
+        .event-card {
+            background: #222; /* Темный фон для карточки */
+            border: 1px solid #444; /* Тонкая граница карточки */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+            transition: all 0.3s ease; /* Плавные переходы */
+            padding: 20px;
+            border-radius: 10px; /* Закругленные углы */
+        }
+
+        .event-card:hover {
+            background: #333; /* Темный фон при наведении */
+            box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1); /* Усиление неоновой тени */
+        }
+
+        /* Описание мероприятия */
+        .event-description {
+            margin-top: 20px;
+        }
+
+        /* Картинка мероприятия */
+        .event-image {
+            max-width: 100%;
+            border-radius: 10px; /* Закругленные углы */
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Легкая неоновая тень */
+        }
+
+        /* Стили для данных о билете */
+        .ticket-info {
+            background: #333; /* Темный фон для блока с данными */
+            border: 1px solid #444; /* Тонкая граница */
+            padding: 15px;
+            border-radius: 10px; /* Закругленные углы */
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Легкая неоновая тень */
+        }
+
+        /* Адаптивность */
+        @media (max-width: 576px) {
+            .event-card {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn-primary, .btn-success {
+                padding: 10px 15px;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Навігаційна панель -->
+    <%- include("partials/navbar.ejs", { activePage: "/event/" + event.id_Event }) %>
+
+    <div class="main-content container mt-4">
+        <div class="event-card">
+            <h1><%= event.Category %></h1>
+            <p><strong>Дата:</strong> <%= event.Date %></p>
+            <p><strong>Опис:</strong> <%= event.Description %></p>
+
+            <!-- Кнопка покупки-->
+            <% if (isBooked) { %>
+                <button class="btn btn-success" disabled>Квиток куплено</button>
+            <% } else { %>
+                <form action="/book/<%= event.id_Event %>" method="POST">
+                    <button type="submit" class="btn btn-primary" id="bookButton">Купити квиток</button>
+                </form>
+            <% } %>
+
+            <!-- Блок с данными о билете -->
+            <% if (isBooked) { %>
+                <div class="ticket-info" id="ticketInfo">
+                    <h5>Дані для вашого квитка:</h5>
+                    <p><strong>Номер квитка:</strong> <%= ticketNumber %></p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <p>&copy; 2024 Події та заходи. Усі права захищено.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('bookButton')?.addEventListener('click', () => {
+            document.getElementById('ticketInfo')?.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>

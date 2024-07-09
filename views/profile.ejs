@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    
+</head>
+<style>
+    /* Общие стили для страницы */
+   html, body {
+       height: 100%;
+       margin: 0;
+       font-family: Arial, sans-serif;
+       background-color: #111; /* Темный фон страницы */
+       color: #ddd; /* Светлый текст по умолчанию */
+       display: flex;
+       flex-direction: column;
+   }
+   
+   /* Основной контейнер для страницы */
+   body > .main-content {
+       flex: 1; /* Заполняет доступное пространство */
+   }
+   
+   /* Футер */
+   .footer {
+       width: 100%;
+       height: 60px;
+       background-color: #111; /* Темный фон для футера */
+       color: #0ff; /* Цвет текста футера в стиле неона */
+       text-align: center;
+       line-height: 60px; /* Вертикальное выравнивание текста */
+       box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+       text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+       position: relative; /* Позиционирование футера */
+   }
+   
+   /* Стили для текста футера */
+   .footer p {
+       margin: 0;
+       font-size: 14px;
+       color: #0ff; /* Цвет текста футера в стиле неона */
+   }
+   
+   /* Кнопки в неоновом стиле */
+   .btn-primary {
+       background: #111; /* Темный фон для кнопки */
+       color: #0ff; /* Яркий неоновый цвет текста */
+       border: 2px solid #0ff; /* Неоновая рамка вокруг кнопки */
+       box-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+       text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+       transition: all 0.3s ease; /* Плавные переходы */
+   }
+   
+   .btn-primary:hover {
+       background: #0ff; /* Яркий неоновый цвет фона при наведении */
+       color: #111; /* Темный цвет текста при наведении */
+       box-shadow: 0 0 10px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1); /* Усиление неоновой тени */
+   }
+   
+   /* Заголовки в неоновом стиле */
+   h1, h5 {
+       color: #0ff; /* Яркий неоновый цвет текста */
+       text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+       font-weight: bold; /* Полужирный текст */
+   }
+   
+   /* Ссылки в неоновом стиле */
+   a {
+       color: #0ff; /* Яркий неоновый цвет текста */
+       text-shadow: 0 0 5px rgba(0, 255, 255, 0.8); /* Светящийся текст */
+   }
+   
+   a:hover {
+       color: #fff; /* Белый цвет текста при наведении */
+       text-shadow: 0 0 10px rgba(0, 255, 255, 1); /* Усиление неонового свечения */
+   }
+   
+   /* Карточки мероприятий в неоновом стиле */
+   .card {
+       background: #222; /* Темный фон для карточки */
+       border: 1px solid #444; /* Тонкая граница карточки */
+       box-shadow: 0 0 10px rgba(0, 255, 255, 0.8); /* Неоновая тень */
+       transition: all 0.3s ease; /* Плавные переходы */
+   }
+   
+   .card:hover {
+       background: #333; /* Темный фон при наведении */
+       box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 20px rgba(0, 255, 255, 1); /* Усиление неоновой тени */
+   }
+   
+   /* Стили для формы поиска */
+   .search-form {
+       margin-top: 20px;
+   }
+   
+   /* Стили для фильтров */
+   .filter-card {
+       margin-top: 20px;
+   }
+   
+   .filter-form .form-group label {
+       color: #0ff; /* Цвет меток в фильтре */
+   }
+   
+   /* Стили для списка мероприятий */
+   .event-list {
+       margin-top: 20px;
+   }
+   
+   </style>
+<body>
+
+<%- include("partials/navbar.ejs", { activePage: "profile" }) %>
+
+<div class="profile-form">
+    <h1>Профіль</h1>
+    <form method="post" action="/profile">
+        <div class="form-group">
+            <label for="name">Ім'я</label>
+            <input type="text" name="name" class="form-control" id="name" value="<%= currentUser.name %>" placeholder="John" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Електронна адреса</label>
+            <input type="email" name="email" class="form-control" id="email" value="<%- currentUser.email %>" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Пароль</label>
+            <input name="password" class="form-control" id="password" type="password" required>
+        </div>
+    </form>
+</div>
+
+<!-- JavaScript -->
+<script src="/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
